@@ -5,10 +5,10 @@ if [[ -z $USER_NAME ]]; then
     exit 1;
 fi
 
+useradd $USER_NAME
+usermod -G $USER_NAME,$USER_GROUPS $USER_NAME
+
 USER_HOME=/home/$USER_NAME
-
-useradd -G docker $USER_NAME
-
 USER_SSH_DIR=$USER_HOME/.ssh
 
 if [[ -n $USER_PUBLIC_KEY ]]; then
